@@ -138,6 +138,8 @@ const dm={w:new THREE.MeshStandardMaterial({color:0xf4eee0,roughness:.35}),b:new
 function disc(t,col){const g=new THREE.Group(),M=dm[col],n=t==='k'?2:1;
  for(let i=0;i<n;i++){const d=new THREE.Mesh(new THREE.CylinderGeometry(.4,.42,.16,40),M);d.position.y=.08+i*.17;g.add(d);
   const rg=new THREE.Mesh(new THREE.TorusGeometry(.27,.03,8,36),M);rg.rotation.x=Math.PI/2;rg.position.y=.165+i*.17;g.add(rg)}
+ if(t==='k'){const GM=new THREE.MeshStandardMaterial({color:0xffc83a,metalness:.7,roughness:.25,emissive:0x4a3300}),y0=.34,cb=new THREE.Mesh(new THREE.CylinderGeometry(.2,.2,.05,24),GM);cb.position.y=y0+.025;g.add(cb);
+  for(let a=0;a<5;a++){const an=a*2*Math.PI/5,px=Math.cos(an)*.15,pz=Math.sin(an)*.15,c=new THREE.Mesh(new THREE.ConeGeometry(.055,.15,8),GM),s=new THREE.Mesh(new THREE.SphereGeometry(.03,8,8),GM);c.position.set(px,y0+.125,pz);s.position.set(px,y0+.21,pz);g.add(c,s)}}
  g.traverse(o=>{if(o.isMesh)o.castShadow=true});return g}
 function build(t,col){if(G==='d')return disc(t,col);
  const g=new THREE.Group(),M=mats[col],add=(geo,x=0,y=0,z=0)=>{const m=new THREE.Mesh(geo,M);m.position.set(x,y,z);g.add(m);return m};
