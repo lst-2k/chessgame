@@ -53,6 +53,7 @@ button:active{background:#3b414c}
 </div>
 
 <script>
+
 <div id="st"></div>
 <div id="mn"><div id="mb"></div></div>
 <div id="bar"><button id="nw">New game</button><button id="menu">Menu</button><button id="inv" hidden>Invite</button><button id="gm" hidden>Game: Chess</button><button id="md" hidden>Mode: vs Computer</button><button id="sn">Sound: on</button><button id="mu">Music: on</button></div>
@@ -63,6 +64,14 @@ button:active{background:#3b414c}
 const N=[[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]],K8=[[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]],R4=K8.slice(0,4),B4=K8.slice(4);
 const inb=(r,c)=>r>=0&&r<8&&c>=0&&c<8;
 const START=['rnbqkbnr','pppppppp','........','........','........','........','PPPPPPPP','RNBQKBNR'];
+function togglePortalMenu() {
+    const dropdown = document.getElementById('portal-menu-dropdown');
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'block';
+    } else {
+        dropdown.style.display = 'none';
+    }
+}
 function dmoves(S,r,c,capOnly){
  const b=S.b,p=b[r][c],col=p[0],o=col==='w'?'b':'w',out=[];
  const dirs=p[1]==='k'?[[1,1],[1,-1],[-1,1],[-1,-1]]:(col==='w'?[[-1,1],[-1,-1]]:[[1,1],[1,-1]]);
